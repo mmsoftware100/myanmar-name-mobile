@@ -1,16 +1,37 @@
-# myanmarname
+# Myanmar Name
 
-A new Flutter project.
+ကိုစေတန် ရေးထားတဲ့ Web Version ကို Dart နဲ့ ပြန်ရေးထားတာဖြစ်ပါတယ်။
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Name list data source from https://github.com/ye-kyaw-thu/myRoman/blob/main/person-name/person-name.ver1.0.txt
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Syllable code from https://github.com/ye-kyaw-thu/sylbreak/blob/master/Javascript/resegment.js
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Dirty Code
+
+The code is so dirty and just try to prove , what is the eaiest way for myanmar name to english and english to myanmar. Only support Burmese name.
+
+# Test
+
+Test with node.js
+
+```
+node name.js
+```
+
+Test with website javascript
+
+```
+open index.html
+```
+
+# Result
+
+input: အောင်ကောင်းစံ , output: aung kaung san
+
+input: lin naing aung , output: လင်း နိုင် အောင်
+
+# Screenshot
+
+![](./screen.png)
