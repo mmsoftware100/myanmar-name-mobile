@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      showSemanticsDebugger: false,
+      title: 'Myanmar Name',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -119,8 +120,42 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _convert({required String text}){
+    // check mode and text is match
+
+    print(checkEnglish(text));
+    print("_myanmar is $_myanmarInput");
+
+    if(text.isNotEmpty){
+      if(checkEnglish(text[0])){
+        // user type english
+        if(_myanmarInput == true ){
+          // we're expection myanmar
+          // so change
+          setState(() {
+            _myanmarInput = false;
+          });
+        }
+      }
+      else{
+        if(_myanmarInput == false){
+          // မြန်မာစာ လက်မခံဘူးဆိုပေမယ့် မြန်မာစာတွေ ရိုက်နေတယ်။
+          setState(() {
+            _myanmarInput = true;
+          });
+        }
+      }
+    }
+
+    print("_myanmar is $_myanmarInput");
+
+
     setState(() {
       result = _myanmarInput ?   MyanmarNameConverter.mm2en(text) : MyanmarNameConverter.en2mm(text);
     });
+  }
+
+  bool checkEnglish(String input) {
+    RegExp regex = RegExp(r'^[a-zA-Z]');
+    return regex.hasMatch(input);
   }
 }
