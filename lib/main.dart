@@ -71,8 +71,25 @@ class _HomePageState extends State<HomePage> {
             Text('English'),
           ],
         ),
-        Text(result),
+        Container(
+          padding: EdgeInsets.all(24.0),
+            margin: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 1,
+                  blurRadius: 1,
+                  offset: Offset(0, 0), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Text(result, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),)
+        ),
         // _switchValue ? Text("Enter Myanmar") : Text("Enter English"),
+        SizedBox(height: 8.0,),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
