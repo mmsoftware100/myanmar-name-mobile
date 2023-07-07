@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:myanmarname/myanmar_name_converter.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -37,6 +39,11 @@ class _HomePageState extends State<HomePage> {
 
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  AppBar(
@@ -61,10 +68,10 @@ class _HomePageState extends State<HomePage> {
             Container(
                 margin: EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
+                  border: Border.all(color: Colors.green),
                   borderRadius: BorderRadius.circular(8.0)
                 ),
-                child: TextButton(onPressed: (){ _toggleSwitch(!_myanmarInput); }, child: Icon(Icons.arrow_forward_ios))),
+                child: TextButton(onPressed: (){ _toggleSwitch(!_myanmarInput); }, child: Icon(Icons.arrow_forward_ios, color: Colors.green,))),
 
 
             Expanded(child: Text(_myanmarInput ? "English" : "Myanmar")),
