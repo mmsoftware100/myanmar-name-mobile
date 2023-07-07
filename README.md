@@ -1,5 +1,10 @@
 # Myanmar Name
 
+## App Name and Icon Update
+
+## Apk , Ipa and Web Release
+
+
 ကိုစေတန် ရေးထားတဲ့ Web Version ကို Dart နဲ့ ပြန်ရေးထားတာဖြစ်ပါတယ်။
 
 
