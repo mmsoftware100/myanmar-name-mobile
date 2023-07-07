@@ -12,18 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      showSemanticsDebugger: false,
+      debugShowCheckedModeBanner: false,
+      // showSemanticsDebugger: false,
       title: 'Myanmar Name',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
@@ -57,10 +49,26 @@ class _HomePageState extends State<HomePage> {
   Widget _mainWidget(){
     return Column(
       children: [
+        // indicator
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('Myanmar'),
+
+            Expanded(
+                child: Text(_myanmarInput ? "Myanmar" : "English", textAlign: TextAlign.end,)
+            ),
+
+            Container(
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue),
+                  borderRadius: BorderRadius.circular(8.0)
+                ),
+                child: TextButton(onPressed: (){ _toggleSwitch(!_myanmarInput); }, child: Icon(Icons.arrow_forward_ios))),
+
+
+            Expanded(child: Text(_myanmarInput ? "English" : "Myanmar")),
+            /*
             Switch(
               value: _myanmarInput,
               inactiveTrackColor: Colors.greenAccent,
@@ -69,11 +77,17 @@ class _HomePageState extends State<HomePage> {
                 _toggleSwitch(value);
               },
             ),
-            Text('English'),
+            */
+            // Text('English'),
           ],
         ),
+        // result
+        result.isEmpty ? Container(
+            padding: EdgeInsets.all(8.0),
+            margin: EdgeInsets.all(8.0),
+            child: Text("Enter English Name / မြန်မာ နာမည် ရိုက်ထည့်ပါ", style: TextStyle(color: Colors.black26),)) :
         Container(
-          padding: EdgeInsets.all(24.0),
+          padding: EdgeInsets.all(8.0),
             margin: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
@@ -104,6 +118,7 @@ class _HomePageState extends State<HomePage> {
             onChanged: (String? text){
               _convert(text: text ?? "");
             },
+
           ),
         )
       ],
