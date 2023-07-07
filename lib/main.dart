@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       // showSemanticsDebugger: false,
       title: 'Myanmar Name',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: const HomePage(),
     );
