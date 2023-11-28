@@ -57,25 +57,36 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         // indicator
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
+        _row(),
+        // result
+        _result(),
+        // _switchValue ? Text("Enter Myanmar") : Text("Enter English"),
+        SizedBox(height: 8.0,),
+        _textBox()
+      ],
+    );
+  }
 
-            Expanded(
-                child: Text(_myanmarInput ? "Myanmar" : "English", textAlign: TextAlign.end,)
+  Widget _row(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+
+        Expanded(
+            child: Text(_myanmarInput ? "Myanmar" : "English", textAlign: TextAlign.end,)
+        ),
+
+        Container(
+            margin: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.green),
+                borderRadius: BorderRadius.circular(8.0)
             ),
-
-            Container(
-                margin: EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.green),
-                  borderRadius: BorderRadius.circular(8.0)
-                ),
-                child: TextButton(onPressed: (){ _toggleSwitch(!_myanmarInput); }, child: Icon(Icons.arrow_forward_ios, color: Colors.green,))),
+            child: TextButton(onPressed: (){ _toggleSwitch(!_myanmarInput); }, child: Icon(Icons.arrow_forward_ios, color: Colors.green,))),
 
 
-            Expanded(child: Text(_myanmarInput ? "English" : "Myanmar")),
-            /*
+        Expanded(child: Text(_myanmarInput ? "English" : "Myanmar")),
+        /*
             Switch(
               value: _myanmarInput,
               inactiveTrackColor: Colors.greenAccent,
@@ -85,51 +96,52 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             */
-            // Text('English'),
-          ],
-        ),
-        // result
-        result.isEmpty ? Container(
-            padding: EdgeInsets.all(8.0),
-            margin: EdgeInsets.all(8.0),
-            child: Text("Enter English Name / မြန်မာ နာမည် ရိုက်ထည့်ပါ", style: TextStyle(color: Colors.black26),)) :
-        Container(
-          padding: EdgeInsets.all(8.0),
-            margin: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                  offset: Offset(0, 0), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Text(result, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),)
-        ),
-        // _switchValue ? Text("Enter Myanmar") : Text("Enter English"),
-        SizedBox(height: 8.0,),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-            controller: tec,
-            // textAlign: TextAlign.center,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: _myanmarInput ? "Enter Myanmar" : "Enter English",
-              label:  _myanmarInput ? Text("Enter Myanmar") : Text("Enter English"),
-            ),
-            onChanged: (String? text){
-              _convert(text: text ?? "");
-            },
-
-          ),
-        )
+        // Text('English'),
       ],
     );
+  }
+
+  Widget _result(){
+    return result.isEmpty ? Container(
+        padding: EdgeInsets.all(8.0),
+        margin: EdgeInsets.all(8.0),
+        child: Text("Enter English Name / မြန်မာ နာမည် ရိုက်ထည့်ပါ", style: TextStyle(color: Colors.black26),)) :
+    Container(
+        padding: EdgeInsets.all(8.0),
+        margin: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              spreadRadius: 1,
+              blurRadius: 1,
+              offset: Offset(0, 0), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Text(result, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),)
+    );
+  }
+
+  Widget _textBox(){
+    return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: TextFormField(
+          controller: tec,
+          // textAlign: TextAlign.center,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: _myanmarInput ? "Enter Myanmar" : "Enter English",
+            label:  _myanmarInput ? Text("Enter Myanmar") : Text("Enter English"),
+          ),
+          onChanged: (String? text){
+            _convert(text: text ?? "");
+          },
+
+        ),
+      );
   }
 
   void _toggleSwitch(bool status){
